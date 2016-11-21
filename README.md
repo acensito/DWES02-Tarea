@@ -58,14 +58,16 @@ Por último, tienes que  **AUTO-EVALUARTE** , justificando si fuese necesario la
 
 ## Criterios de corrección
 
-| La obtención de la nota de la tarea se hará según los siguientes criterios mostrados en la siguiente tabla:|   |
+|La obtención de la nota de la tarea se hará según los siguientes criterios mostrados en la siguiente tabla:|
 |---|
-|  **Puntuación Máxima**  |**Criterio**    |
-|---|---| 
+
+| **Puntuación Máxima** | **Criterio** |
+|---|---|
 |  Sin calificación | Tarea no entregada o en borrador. |
 | 0  |La tarea entregada no se corresponde con lo que se  pide.El fichero está corrupto o no se puede abrir.La tarea se ha entregado fuera de plazo.La tarea ha sido copiada.La estructura de la base de datos ha sido modificada.La aplicación no se puede ejecutar debido a errores.|
 | 4  |Parte de la aplicación no se puede ejecutar.La tarea se realiza usando Sesiones, Cookies, AJAX, javascript, etc que se trabajarán en unidades posteriores.|
 | 10 |La tarea entregada y que funcione correctamente (que no corresponda a ninguno de los apartados mencionados anteriormente) será corregida según la siguiente valoración:|
+
 
 Se valorará cada uno de los siguientes items (siempre que se haga usando  **PDO** ):
 
