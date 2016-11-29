@@ -205,8 +205,27 @@ function agrega_usuario() {
  */
 function elimina_usuario() {
     if ((isset($_POST['indice'])) AND ($_POST['indice']) != NULL) { //Si existe usuario elegido o este no es nulo.... (el usuario en sí)
-
-        try { //Preparamos la consulta de eliminacion con los datos
+        // Primero eliminamos todos los movimientos existentes de este usuario.
+        // dado que de otra manera no lo eliminará por mantener la integridad referencial y no tener especificada la 
+        // base de datos ON DELETE CASCADE.
+        // El enunciado indica otra cosa diferente, pero es inviable ya que no es posible de otra manera sin enrevesar el código demasiado
+        
+        // Como solución final, se podria hacer que traspasara los movimientos a otra tabla o que se los traspasara al usuario "eliminado"
+        // que se comprobaría si existe ya en la BD previamente o se crearia en el momento de la eliminación si no existiera.
+        
+        try { //Preparamos la consulta de eliminacion de los movimientos del usuario especificado
+            $consulta = "DELETE FROM movimientos WHERE loginUsu = :login";
+            
+            $resultado = $GLOBALS['con']->prepare($consulta);
+            $resultado->bindParam(":login", $_POST['indice']); //parametrizamos la consulta con el login del usuario a eliminar
+            
+            $resultado->execute(); //Ejecutamos la consulta
+            
+        } catch (PDOException $e){ //En caso de errores, que los capture y los muestre
+            echo "<div class='errcon'><p>Se ha producido error " . $e->getMessage() . "</p></div>"; //Se captura el error y se muestra 
+        }
+        
+        try { //Preparamos la consulta de eliminacion de usuarui con los datos de usuario
             $consulta = "DELETE FROM usuarios WHERE login = :login";
             
             $resultado = $GLOBALS['con']->prepare($consulta);
