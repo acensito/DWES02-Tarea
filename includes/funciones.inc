@@ -404,7 +404,7 @@ function ingreso_pago($user) {
             echo "<div class='errcon'><p>Se ha producido error " . $e->getMessage() . "</p></div>"; //Capturamos el error y mostramos el mensaje
         }
 
-        echo "<p class='perfect'>Ha realizado usted un ingreso correctamente</p>"; //Feedback satisfactorio
+        echo "<p class='perfect'>Se ha realizado un movimiento correctamente</p>"; //Feedback satisfactorio
         
         movimientos($user); //Mostramos el listado de movimientos
     }
