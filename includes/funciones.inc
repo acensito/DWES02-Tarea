@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /* 
  * CODIGO CREADO BAJO LICENCIA CREATIVE COMMONS
  * Reconocimiento - NoComercial - CompartirIgual (by-nc-sa): 
@@ -14,7 +14,7 @@
  * @global PDO $con conexión a la base de datos.
  */
 function conectar(){
-    $db_host = 'localhost';  //  hostname Por defecto: localhost
+    $db_host = '192.168.0.250';  //  hostname Por defecto: localhost
     $db_name = 'banca_electronica';  //  databasename
     $db_user = 'dwes';  //  username
     $user_pw = 'dwes';  //  password
@@ -45,7 +45,7 @@ function desconectar() {
 
 /**
  * Función que muestra el login de acceso. Dependiendo del parametro introducido
- * la acción del login será diferente aligiendo si es de tipo admin o user, por
+ * la acción del login será diferente eligiendo si es de tipo admin o user, por
  * lo que el acion post se modificaria (user.php o admin.php)
  * 
  * El resto, es un simple formulario
@@ -53,8 +53,8 @@ function desconectar() {
  * @param type $tipo (user o admin)
  */
 function acceso($tipo) {
-    echo "<form id='signup' action='".$tipo.".php' method='post'>";
-        ?>
+    ?>
+    <form id="signup" action="<?php echo $tipo ?>.php" method="post">
         <div class="header">
             <h3>Acceso</h3>
             <p>Debes rellenar este formulario para acceder</p>
@@ -91,13 +91,13 @@ function usuarios($modo){
     echo "<h4 class='centrado'>Usuarios activos</h4>";
     
     echo "<table>";
-    echo "<tr class='encabezado'><th>#</th><th>Usuario</th><th>Password</th><th>Nombre</th><th>Fecha Nacimiento</th></tr>";
+    echo "<tr class='encabezado'><th>#</th><th>Usuario</th><th>Nombre</th><th>Fecha Nacimiento</th></tr>";
     
     if ($resultado->rowCount() > 0) { //Si el numero de resultados es mayor que cero (existen resultados a mostrar)
        
         foreach ($resultado as $usuarios) { //Ppor cada resultado como un usuario...
             echo "<tr>";
-            echo "<td class='centrado'><input type='radio' name='indice' value='" . $usuarios['login'] . "'></td><td>" . $usuarios['login'] . "</td><td>" . $usuarios['password'] . "</td><td>" . $usuarios['nombre'] . "</td><td>" . $usuarios['fNacimiento'] . "</td>";
+            echo "<td class='centrado'><input type='radio' name='indice' value='" . $usuarios['login'] . "'></td><td>" . $usuarios['login'] . "</td><td>" . $usuarios['nombre'] . "</td><td>" . $usuarios['fNacimiento'] . "</td>";
             echo "</tr>";
         }
         echo "</table>"; 
